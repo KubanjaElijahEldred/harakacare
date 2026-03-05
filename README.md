@@ -1,6 +1,6 @@
 # HarakaCare
 
-A Django-based web application for healthcare management.
+A Django-based web application for healthcare management
 
 ## Prerequisites
 
