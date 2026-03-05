@@ -5,19 +5,18 @@ UPDATED FOR COMPLAINT-BASED, AGE-ADAPTIVE TRIAGE
 """
 
 from django.urls import path
-# from apps.triage import conversational_views, views
-from apps.triage import views
+from apps.triage import conversational_views, views
 
 app_name = 'triage'
 
 urlpatterns = [
 
     # ---- Conversational ----
-    # path('conversational/', conversational_views.ConversationalTriageView.as_view(), name='conversational-triage'),
-    # path('conversational/<str:patient_token>/status/', conversational_views.ConversationalStatusView.as_view(), name='conversational-status'),
-    # path('conversational/<str:patient_token>/history/', conversational_views.ConversationalHistoryView.as_view(), name='conversational-history'),
-    # path('conversational/<str:patient_token>/reset/', conversational_views.ConversationalResetView.as_view(), name='conversational-reset'),
-    # path('conversational/<str:patient_token>/next-question/', views.GetNextQuestionView.as_view(), name='conversational-next'),
+    path('conversational/', conversational_views.ConversationalTriageView.as_view(), name='conversational-triage'),
+    path('conversational/<str:patient_token>/status/', conversational_views.ConversationalStatusView.as_view(), name='conversational-status'),
+    path('conversational/<str:patient_token>/history/', conversational_views.ConversationalHistoryView.as_view(), name='conversational-history'),
+    path('conversational/<str:patient_token>/reset/', conversational_views.ConversationalResetView.as_view(), name='conversational-reset'),
+    path('conversational/<str:patient_token>/next-question/', views.GetNextQuestionView.as_view(), name='conversational-next'),
 
     # ---- Structured ----
     path('start/', views.StartTriageView.as_view(), name='start'),
@@ -30,7 +29,7 @@ urlpatterns = [
     path('adaptive/<str:patient_token>/next/', views.GetNextQuestionView.as_view(), name='adaptive-next'),
 
     # ---- Hybrid ----
-    # path('hybrid/<str:patient_token>/', conversational_views.HybridTriageView.as_view(), name='hybrid-triage'),
+    path('hybrid/<str:patient_token>/', conversational_views.HybridTriageView.as_view(), name='hybrid-triage'),
 
     # ---- Utility ----
     path('health/', views.TriageHealthCheckView.as_view(), name='health'),
